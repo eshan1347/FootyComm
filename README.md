@@ -1,9 +1,9 @@
 # FootyComm
-Experimental LSTM + Multi-Head Attention Model for Football Commentary Generation
+Experimental LSTM + Multi-Head Attention Model + LLM decoding strategies for Football Commentary Generation 
 
 [Deployed on Huggingface](https://huggingface.co/spaces/eshan13/FootyComm)
 
-This repository contains a PyTorch implementation of a sequence-to-sequence model for football commentary generation from a structured events & stats input. The model utilizes Bi-directional LSTM along with Multi Head Self as well as Cross Attention with GPT2 as the tokenizer & is trained on football events & commentary data from european leagues.
+This repository contains a PyTorch implementation of a sequence-to-sequence model for football commentary generation from a structured events & stats input. The model utilizes Bi-directional LSTM along with Multi Head Self as well as Cross Attention with GPT2 as the tokenizer & is trained on football events & commentary data from european leagues. Various decoding techniques - old & recent( from LLMs) were tried out. 
 
 ## Table of Contents
 - Introduction
@@ -11,6 +11,7 @@ This repository contains a PyTorch implementation of a sequence-to-sequence mode
 - Model
 - Preprocessing
 - Training
+- Decoding
 - Results
 
 ## Introduction:
@@ -57,5 +58,8 @@ The dataset used is huge ~ 2 million smaples. Only 50000 entries and 35 features
 ## Training
 A typical PyTorch training loop is ran with Adam optimizer , StepLR scheduler, early stopping and a Cross-Entropy Loss function . The entire input is passed through the Encoder to generate encoder , hidden & cell states. The hidden & cell states are used to initialise the states in the Decoder Bi-directional LSTM . The decoder is trained auto-regressively(1 step at a time) with Teacher Forcing (target tokens passed as input/ previous token to the decoder lstm) . Cross Attention with 4 n_heads is utilised with the embedded input to the decoder as query & the encoder output as the key & value. The attention output & lstm output is concatenated & returned after passing through a Output Linear layer. While applying attention - padding mask is used. 
 
+## Decoding
+After completion of training ,Experiments with various decoding techniques like greedy , sampling, top k, diverse beam search, minimum bayes risk were conducted. These techniques along with their required parameters (temperature, beam_width,  diversity penalty etc) are available to test & play around for users on the deployed huggingface space. The Best performing decoding strategy based on few test runs & vibes is Mininum Bayes Risk & the worst is greedy to no ones suprise.
+
 ## Results
-The model learning can be improved by training for more epochs as well as utilising the entire dataset as well as additional data. Hyperparamter tuning & increasing the number of model parameters may also improve the results.
+The model learning can be improved by training for more epochs as well as utilising the entire dataset as well as additional data. Hyperparamter tuning & increasing the number of model parameters may also improve the results. More rigorous & complex decoding strategies like Contrastive decoding may also bring improvements.
