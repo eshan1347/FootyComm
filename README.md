@@ -3,7 +3,7 @@ Experimental LSTM + Multi-Head Attention Model for Football Commentary Generatio
 
 [Deployed on Huggingface](https://huggingface.co/spaces/eshan13/FootyComm)
 
-This repository contains a PyTorch implementation of a sequence-to-sequence model for football commentary generation from a structured events & stats input. The model utilizes LSTM along with Multi Head Self as well as Cross Attention with GPT2 as the tokenizer & is trained on football events & commentary data from european leagues.
+This repository contains a PyTorch implementation of a sequence-to-sequence model for football commentary generation from a structured events & stats input. The model utilizes Bi-directional LSTM along with Multi Head Self as well as Cross Attention with GPT2 as the tokenizer & is trained on football events & commentary data from european leagues.
 
 ## Table of Contents
 - Introduction
@@ -14,7 +14,7 @@ This repository contains a PyTorch implementation of a sequence-to-sequence mode
 - Results
 
 ## Introduction:
-It is a classic Sequence to Sequence Model with Encoder-decoder architecture with LSTM , but unlike using classic single head cross attention , I have experimented & implemented Multi Head Self Attention in the Encoder & Multi-Head Cross Attention in the Decoder - like Transformers . This unique combination allows the model to quickly catch on to the patterns present in Football commentary & so even with low quality & quantity of data, small model, low training epochs (~10) & Mixed precision training - the model outputs coherant commentary. Also , instead of using a Text Embedding Model - I have chosen GPT2Tokenizer for encoding text , which has a vocabulary size of 50257.
+It is a classic Sequence to Sequence Model with Encoder-decoder architecture with Bi-directional LSTM , but unlike using classic single head cross attention , I have experimented & implemented Multi Head Self Attention in the Encoder & Multi-Head Cross Attention in the Decoder - like Transformers . This unique combination allows the model to quickly catch on to the patterns present in Football commentary & so even with low quality & quantity of data, small model, low training epochs (~10) & Mixed precision training - the model outputs coherant commentary. Also , instead of using a Text Embedding Model - I have chosen GPT2Tokenizer for encoding text , which has a vocabulary size of 50257.
 
 
 Model Architecture: 
