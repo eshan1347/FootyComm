@@ -1,9 +1,9 @@
 # FootyComm
 Experimental LSTM + Multi-Head Attention Model + LLM decoding strategies for Football Commentary Generation 
 
-https://github.com/user-attachments/assets/d1b4100c-814d-488f-a01c-f04ca00f76c9
-
 [Deployed on Huggingface](https://huggingface.co/spaces/eshan13/FootyComm)
+
+https://github.com/user-attachments/assets/d1b4100c-814d-488f-a01c-f04ca00f76c9
 
 This repository contains a PyTorch implementation of a sequence-to-sequence model for football commentary generation from a structured events & stats input. The model utilizes Bi-directional LSTM along with Multi Head Self as well as Cross Attention with GPT2 as the tokenizer & is trained on football events & commentary data from european leagues. Various decoding techniques - old & recent( from LLMs) were tried out. 
 
